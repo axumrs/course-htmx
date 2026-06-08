@@ -1,0 +1,12 @@
+[package]
+name = "htmx-ajax-basic"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.102"
+axum = "0.8.9"
+serde = { version = "1.0.228", features = ["derive"] }
+tokio = { version = "1.52.3", features = ["full"] }
+tower-http = { version = "0.6.11", features = ["fs"] }
+uuid = { version = "1.23.2", features = ["serde", "v7"] }
