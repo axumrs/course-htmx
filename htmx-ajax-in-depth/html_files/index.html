@@ -6,19 +6,15 @@
     <title>HTMX@AXUM.EU.ORG</title>
   </head>
   <body>
-    <section>
-      <h2>最简单的方式（只指定 <code>hx-get</code>）</h2>
-      <button hx-get="/api/messages">获取数据</button>
-    </section>
-    <section>
-      <h2>双击（指定 <code>hx-get</code> 和 <code>hx-trigger</code>）</h2>
-      <button hx-get="/api/messages" hx-trigger="dblclick">获取数据</button>
-    </section>
-    <section>
-      <h2>目标元素（指定 <code>hx-get</code> 和 <code>hx-target</code>）</h2>
-      <button hx-get="/api/messages" hx-target="#msg-list">获取数据</button>
-      <div id="msg-list"></div>
-    </section>
+    <input
+      type="text"
+      name="keyword"
+      hx-post="/api/topics"
+      hx-trigger="keyup changed delay:500ms"
+      hx-target="#search-results"
+      placeholder="输入关键字进行搜索"
+    />
+    <ul id="search-results" hx-get="/api/topics" hx-trigger="load"></ul>
     <script
       src="https://lib.axum.eu.org/htmx/2.0.10/htmx.min.js"
       defer

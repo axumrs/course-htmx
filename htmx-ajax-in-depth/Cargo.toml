@@ -1,5 +1,5 @@
 [package]
-name = "htmx-ajax-basic"
+name = "htmx-ajax-in-depth"
 version = "0.1.0"
 edition = "2024"
 

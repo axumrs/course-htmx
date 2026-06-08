@@ -14,5 +14,5 @@ async fn main() -> anyhow::Result<()> {
 }
 
 fn api_router() -> Router {
-    Router::new().route("/messages", get(api::message_list))
+    Router::new().route("/topics", get(api::topic_list).post(api::topic_list))
 }
