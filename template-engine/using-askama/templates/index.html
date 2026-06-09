@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AXUM使用htmx</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://lib.axum.eu.org/basecoat/0.3.11/basecoat.min.css"
+    />
+  </head>
+  <body>
+    <div
+      class="htmx-indicator fixed inset-0 z-50 bg-black/10 backdrop-blur-xs"
+      id="indicator"
+    >
+      <div
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-6"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-loader-circle-icon lucide-loader-circle animate-spin"
+        >
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+      </div>
+    </div>
+    <div class="container mx-auto max-w-lg my-6">
+      <div
+        class="card"
+        x-data="{expand:true, toggle(){this.expand=!this.expand}}"
+      >
+        <header class="flex justify-between items-center gap-x-2">
+          <h2>用户信息</h2>
+          <div>
+            <button
+              class="btn-sm"
+              hx-get="/profile"
+              hx-target="#user-profile"
+              hx-trigger="click throttle:1s"
+              hx-indicator="#indicator"
+            >
+              刷新
+            </button>
+            <button class="btn-sm-secondary" @click="toggle()">
+              <span x-show="!expand">展开</span>
+              <span x-show="expand">收起</span>
+            </button>
+          </div>
+        </header>
+        <section
+          id="user-profile"
+          hx-get="/profile"
+          hx-trigger="load"
+          x-show="expand"
+          hx-indicator="#indicator"
+        ></section>
+      </div>
+    </div>
+    <script
+      src="https://lib.axum.eu.org/htmx/2.0.10/htmx.min.js"
+      defer
+    ></script>
+    <script
+      src="https://lib.axum.eu.org/alpinejs/3.15.12/alpinejs.min.js"
+      defer
+    ></script>
+    <script
+      src="https://lib.axum.eu.org/basecoat/0.3.11/basecoat.all.min.js"
+      defer
+    ></script>
+  </body>
+</html>

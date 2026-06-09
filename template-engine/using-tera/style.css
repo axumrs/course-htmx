@@ -1,0 +1,2 @@
+@import "tailwindcss";
+@source "./templates/**/*.{html,css,js}"; /* 只处理模板 */
